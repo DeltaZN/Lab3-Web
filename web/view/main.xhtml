@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+    <h:head>
+        <title>Lab3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </h:head>
+    <h:body>
+        <div id="header">
+            By Agababyan Karlen and Gosha Sawin
+        </div>
+        <div id="content">
+            <div class="program">
+                <div id="graphic">
+                    <h:form id="canvaForm">
+                        <canvas id="plot" width="300" height="300">
+                        </canvas>
+                    </h:form>
+                </div>
+                <div class="input_form">
+                    <h:form id="form" class="data-form">
+                        <div id="x_input">
+                            X: <h:outputText value="#{BackendBean.x}"/>
+                            <h:inputHidden value="#{BackendBean.x}">
+                            </h:inputHidden>
+                            <table cellpadding="10">
+                                <tr>
+                                    <td>
+                                        <h:commandLink value="-3" action="#{BackendBean.setX(-3)}"/>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value="-2" action="#{BackendBean.setX(-2)}"/>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value="-1" action="#{BackendBean.setX(-1)}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:commandLink value=" 0" action="#{BackendBean.setX(0)}"/>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value=" 1" action="#{BackendBean.setX(1)}"/>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value=" 2" action="#{BackendBean.setX(2)}"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:commandLink value=" 3" action="#{BackendBean.setX(3)}"/>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value=" 4" action="#{BackendBean.setX(4)}"/>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value=" 5" action="#{BackendBean.setX(5)}"/>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div id="y_input">
+                            Y: <h:outputText id="y_output" value="#{BackendBean.y}"/><br/>
+                            <h:inputText value="#{BackendBean.y}" id="enterY" name="enterY" title="y"
+                                         validatorMessage="Enter correct Y (from -5 to 3)">
+                                <f:ajax render="y_output" event="keyup"/>
+                                <f:validateDoubleRange minimum="-5.0" maximum="3.0" for="enterY"/>
+                            </h:inputText><br/>
+                            <h:message id="m6" for="enterY" style="color:red"/>
+                        </div>
+                        <div id="r_input">
+                            R: <h:outputText value="#{BackendBean.r}"/><br/>
+                                    <h:commandButton class="button" value="1" action="#{BackendBean.setR(1)}"/>
+                                    <h:commandButton class="button" value="2" action="#{BackendBean.setR(2)}"/>
+                                    <h:commandButton class="button" value="3" action="#{BackendBean.setR(3)}"/>
+                                    <h:commandButton class="button" value="4" action="#{BackendBean.setR(4)}"/>
+                                    <h:commandButton class="button" value="5" action="#{BackendBean.setR(5)}"/>
+                            <h:commandButton value="Проверить" action="#{BackendBean.addPoint}" class="button"/>
+                        </div>
+
+                    </h:form>
+                </div>
+            </div>
+            <h:dataTable value="#{points}" var="p"
+                         styleClass="order-table"
+                         headerClass="order-table-header"
+                         rowClasses="order-table-odd-row,order-table-even-row"
+                         id="resultss">
+
+                <h:column>
+                    <f:facet name="header">
+                        X
+                    </f:facet>
+                    #{p.x}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Y
+                    </f:facet>
+                    #{p.y}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        R
+                    </f:facet>
+                    #{p.r}
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        Hit
+                    </f:facet>
+                    #{p.hit}
+                </h:column>
+
+            </h:dataTable>
+        </div>
+    </h:body>
+</f:view>
+</html>
