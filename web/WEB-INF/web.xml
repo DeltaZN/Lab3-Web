@@ -13,7 +13,7 @@
         <url-pattern>*.xhtml</url-pattern>
     </servlet-mapping>
     <welcome-file-list>
-        <welcome-file>view/main.xhtml</welcome-file>
+        <welcome-file>view/index.xhtml</welcome-file>
     </welcome-file-list>
 
     <context-param>

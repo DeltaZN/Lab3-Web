@@ -29,7 +29,7 @@ public class PointsListProducer {
         return points;
     }
 
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unused", "unchecked"})
     public void onMemberListChanged(@Observes(notifyObserver = Reception.IF_EXISTS) final Point point) {
         points = query.getResultList();
         points.sort((p1, p2) -> p1.getId() > p2.getId() ? 1 : -1);

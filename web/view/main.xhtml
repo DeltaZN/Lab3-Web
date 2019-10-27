@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+<html xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <f:view>
     <h:head>
@@ -11,13 +12,13 @@
     </h:head>
     <h:body>
         <div id="header">
-            By Agababyan Karlen and Gosha Sawin
+            Developed by Agababyan Karlen and Gosha Sawin
         </div>
         <div id="content">
             <div class="program">
                 <div id="graphic">
                     <h:form id="plot">
-                        <canvas id="canvas" width="300" height="300">
+                        <canvas id="canvas" width="300" height="300" onclick="clickCanvas()">
                         </canvas>
                     </h:form>
                 </div>
@@ -110,6 +111,8 @@
                             <h:commandButton value="Проверить" action="#{BackendBean.addPoint}" class="button">
                                 <f:ajax execute="@form" render="results" />
                             </h:commandButton>
+
+                            <h:commandButton value="На главную" action="toIndex" class="button"/>
                         </div>
 
                     </h:form>

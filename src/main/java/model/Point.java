@@ -47,7 +47,7 @@ public class Point {
         return hit;
     }
 
-    public static boolean isHitted(double x, double y, double r) {
+    private static boolean isHitted(double x, double y, double r) {
         boolean rectangleHit = x >= 0 && y <= 0 && x <= r/2 && y >= -r;
         boolean triangleHit = x <= 0 && y >= 0 && y <= x + r;
         boolean sectorHit = x <= 0 && y <= 0 && r >= Math.sqrt(x*x + y*y);

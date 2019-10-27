@@ -1,5 +1,7 @@
 window.onload = function () {
     createGraphic(1);
+
+    document.getElementById("form:j_idt35").click();
 };
 
 function createGraphic(r) {
@@ -149,4 +151,19 @@ function drawPoint(x, y, hit) {
     context.fillStyle = color;
     context.fill();
     context.stroke();
+}
+
+function clickCanvas() {
+    console.log("Click on canvas");
+    let canvas = document.getElementById("canvas");
+
+    let br = canvas.getBoundingClientRect();
+    let left = br.left;
+    let top = br.top;
+
+    let event = window.event;
+    let x = event.clientX - left;
+    let y = event.clientY - top;
+
+    drawPoint((x - 150) / 130 * 5, (-y + 150) / 130 * 5, true);
 }
