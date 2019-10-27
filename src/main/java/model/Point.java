@@ -23,6 +23,10 @@ public class Point {
         this.hit = isHitted(x, y, r);
     }
 
+    public String getDrawPoint(int r) {
+        return String.format("drawPoint(%s, %s, %s)", x, y, isHitted(x, y, r));
+    }
+
     public int getId() {
         return id;
     }

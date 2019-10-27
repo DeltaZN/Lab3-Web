@@ -6,6 +6,7 @@
     <h:head>
         <title>Lab3</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <h:outputScript library="js" name="script.js"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </h:head>
     <h:body>
@@ -15,49 +16,67 @@
         <div id="content">
             <div class="program">
                 <div id="graphic">
-                    <h:form id="canvaForm">
-                        <canvas id="plot" width="300" height="300">
+                    <h:form id="plot">
+                        <canvas id="canvas" width="300" height="300">
                         </canvas>
                     </h:form>
                 </div>
                 <div class="input_form">
                     <h:form id="form" class="data-form">
                         <div id="x_input">
-                            X: <h:outputText value="#{BackendBean.x}"/>
+                            X: <h:outputText id="x_output" value="#{BackendBean.x}"/>
                             <h:inputHidden value="#{BackendBean.x}">
                             </h:inputHidden>
                             <table cellpadding="10">
                                 <tr>
                                     <td>
-                                        <h:commandLink value="-3" action="#{BackendBean.setX(-3)}"/>
+                                        <h:commandLink value="-3" action="#{BackendBean.setX(-3)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
                                     </td>
                                     <td>
-                                        <h:commandLink value="-2" action="#{BackendBean.setX(-2)}"/>
+                                        <h:commandLink value="-2" action="#{BackendBean.setX(-2)}">
+                                        <f:ajax execute="@form" render="@form" />
+                                    </h:commandLink>
                                     </td>
                                     <td>
-                                        <h:commandLink value="-1" action="#{BackendBean.setX(-1)}"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <h:commandLink value=" 0" action="#{BackendBean.setX(0)}"/>
-                                    </td>
-                                    <td>
-                                        <h:commandLink value=" 1" action="#{BackendBean.setX(1)}"/>
-                                    </td>
-                                    <td>
-                                        <h:commandLink value=" 2" action="#{BackendBean.setX(2)}"/>
+                                        <h:commandLink value="-1" action="#{BackendBean.setX(-1)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <h:commandLink value=" 3" action="#{BackendBean.setX(3)}"/>
+                                        <h:commandLink value=" 0" action="#{BackendBean.setX(0)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
                                     </td>
                                     <td>
-                                        <h:commandLink value=" 4" action="#{BackendBean.setX(4)}"/>
+                                        <h:commandLink value=" 1" action="#{BackendBean.setX(1)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
                                     </td>
                                     <td>
-                                        <h:commandLink value=" 5" action="#{BackendBean.setX(5)}"/>
+                                        <h:commandLink value=" 2" action="#{BackendBean.setX(2)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <h:commandLink value=" 3" action="#{BackendBean.setX(3)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value=" 4" action="#{BackendBean.setX(4)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
+                                    </td>
+                                    <td>
+                                        <h:commandLink value=" 5" action="#{BackendBean.setX(5)}">
+                                            <f:ajax execute="@form" render="@form" />
+                                        </h:commandLink>
                                     </td>
                                 </tr>
                             </table>
@@ -72,13 +91,25 @@
                             <h:message id="m6" for="enterY" style="color:red"/>
                         </div>
                         <div id="r_input">
-                            R: <h:outputText value="#{BackendBean.r}"/><br/>
-                                    <h:commandButton class="button" value="1" action="#{BackendBean.setR(1)}"/>
-                                    <h:commandButton class="button" value="2" action="#{BackendBean.setR(2)}"/>
-                                    <h:commandButton class="button" value="3" action="#{BackendBean.setR(3)}"/>
-                                    <h:commandButton class="button" value="4" action="#{BackendBean.setR(4)}"/>
-                                    <h:commandButton class="button" value="5" action="#{BackendBean.setR(5)}"/>
-                            <h:commandButton value="Проверить" action="#{BackendBean.addPoint}" class="button"/>
+                            R: <h:outputText id="r_output" value="#{BackendBean.r}"/><br/>
+                                    <h:commandButton class="button" value="1" onclick="createGraphic(1)" action="#{BackendBean.setR(1)}">
+                                        <f:ajax execute="@form" render="@form results" />
+                                    </h:commandButton>
+                                    <h:commandButton class="button" value="2" onclick="createGraphic(2)" action="#{BackendBean.setR(2)}">
+                                        <f:ajax execute="@form" render="@form results" />
+                                    </h:commandButton>
+                                    <h:commandButton class="button" value="3" onclick="createGraphic(3)" action="#{BackendBean.setR(3)}">
+                                        <f:ajax execute="@form" render="@form results" />
+                                    </h:commandButton>
+                                    <h:commandButton class="button" value="4" onclick="createGraphic(4)" action="#{BackendBean.setR(4)}">
+                                        <f:ajax execute="@form" render="@form results" />
+                                    </h:commandButton>
+                                    <h:commandButton class="button" value="5" onclick="createGraphic(5)" action="#{BackendBean.setR(5)}">
+                                        <f:ajax execute="@form" render="@form results" />
+                                    </h:commandButton>
+                            <h:commandButton value="Проверить" action="#{BackendBean.addPoint}" class="button">
+                                <f:ajax execute="@form" render="results" />
+                            </h:commandButton>
                         </div>
 
                     </h:form>
@@ -88,7 +119,7 @@
                          styleClass="order-table"
                          headerClass="order-table-header"
                          rowClasses="order-table-odd-row,order-table-even-row"
-                         id="resultss">
+                         id="results">
 
                 <h:column>
                     <f:facet name="header">
@@ -116,6 +147,7 @@
                         Hit
                     </f:facet>
                     #{p.hit}
+                    <h:outputScript >#{p.getDrawPoint(BackendBean.r)}</h:outputScript>
                 </h:column>
 
             </h:dataTable>

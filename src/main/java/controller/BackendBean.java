@@ -2,6 +2,7 @@ package controller;
 
 import model.Point;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.enterprise.event.Event;
 import javax.faces.bean.ManagedBean;
@@ -37,6 +38,11 @@ public class BackendBean implements Serializable {
 
     public double getY() {
         return y;
+    }
+
+    @PostConstruct
+    public void init() {
+        r = 1;
     }
 
     public void setX(int x) {
