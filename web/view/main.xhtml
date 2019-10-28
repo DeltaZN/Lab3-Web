@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:head>
         <title>Lab3</title>
@@ -18,8 +19,13 @@
             <div class="program">
                 <div id="graphic">
                     <h:form id="plot">
+                        <h:inputHidden id="xCanvas" value="#{BackendBean.xCanvas}">
+                        </h:inputHidden>
+                        <h:inputHidden id="yCanvas" value="#{BackendBean.yCanvas}">
+                        </h:inputHidden>
                         <canvas id="canvas" width="300" height="300" onclick="clickCanvas()">
                         </canvas>
+                        <p:remoteCommand name="addPoint" action="#{BackendBean.addPointFromCanvas}" update=":results"/>
                     </h:form>
                 </div>
                 <div class="input_form">
@@ -93,7 +99,8 @@
                         </div>
                         <div id="r_input">
                             R: <h:outputText id="r_output" value="#{BackendBean.r}"/><br/>
-                                    <h:commandButton class="button" value="1" onclick="createGraphic(1)" action="#{BackendBean.setR(1)}">
+                            <h:commandButton id="default" class="button" value="1" onclick="createGraphic(1)"
+                                             action="#{BackendBean.setR(1)}">
                                         <f:ajax execute="@form" render="@form results" />
                                     </h:commandButton>
                                     <h:commandButton class="button" value="2" onclick="createGraphic(2)" action="#{BackendBean.setR(2)}">
@@ -108,7 +115,8 @@
                                     <h:commandButton class="button" value="5" onclick="createGraphic(5)" action="#{BackendBean.setR(5)}">
                                         <f:ajax execute="@form" render="@form results" />
                                     </h:commandButton>
-                            <h:commandButton value="Проверить" action="#{BackendBean.addPoint}" class="button">
+                            <h:commandButton value="Проверить" action="#{BackendBean.addPointFromCanvas}"
+                                             class="button">
                                 <f:ajax execute="@form" render="results" />
                             </h:commandButton>
 

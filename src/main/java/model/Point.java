@@ -12,7 +12,7 @@ public class Point {
     private double x;
     private double y;
     private int r;
-    private boolean hit;
+    private char hit;
 
     public Point() {}
 
@@ -20,7 +20,7 @@ public class Point {
         this.x = x;
         this.y = y;
         this.r = r;
-        this.hit = isHitted(x, y, r);
+        this.hit = isHitted(x, y, r) ? 'Y' : 'N';
     }
 
     public String getDrawPoint(int r) {
@@ -43,7 +43,7 @@ public class Point {
         return r;
     }
 
-    public boolean isHit() {
+    public char getHit() {
         return hit;
     }
 

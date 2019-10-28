@@ -1,7 +1,7 @@
 window.onload = function () {
     createGraphic(1);
 
-    document.getElementById("form:j_idt35").click();
+    document.getElementById("form:default").click();
 };
 
 function createGraphic(r) {
@@ -165,5 +165,14 @@ function clickCanvas() {
     let x = event.clientX - left;
     let y = event.clientY - top;
 
-    drawPoint((x - 150) / 130 * 5, (-y + 150) / 130 * 5, true);
+    let xCalculated = (x - 150) / 130 * 5;
+    let yCalculated = (-y + 150) / 130 * 5;
+
+    console.log(`Click on ${xCalculated}, ${yCalculated}`);
+
+    document.getElementById("plot:xCanvas").value = xCalculated;
+    document.getElementById("plot:yCanvas").value = yCalculated;
+
+    // primefaces created function
+    addPoint();
 }
