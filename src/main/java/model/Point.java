@@ -13,6 +13,7 @@ public class Point {
     private double y;
     private int r;
     private char hit;
+    private String sessionId;
 
     public Point() {}
 
@@ -45,6 +46,14 @@ public class Point {
 
     public char getHit() {
         return hit;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
     private static boolean isHitted(double x, double y, double r) {

@@ -1,7 +1,5 @@
 window.onload = function () {
-    createGraphic(1);
-
-    document.getElementById("form:default").click();
+    document.getElementById("form:r1").click();
 };
 
 function createGraphic(r) {
@@ -175,4 +173,33 @@ function clickCanvas() {
 
     // primefaces created function
     addPoint();
+
+}
+
+function egg() {
+    let canvas = document.getElementById("canvas"),
+        context = canvas.getContext("2d");
+    let img = new Image();
+
+    img.src = "../resources/img/angryMushroom.png";
+
+    context.drawImage(img, 25, 97);
+
+    let currentAngle = 0.1;
+    let vx = 0;
+    let vy = 0;
+
+    let r = parseInt(document.getElementById("form:r_output").innerHTML);
+    let interval = setInterval(function () {
+        vx = Math.cos(currentAngle) * 100 - 100;
+        vy = Math.sin(currentAngle) * 100;
+
+        createGraphic(r);
+        context.drawImage(img, 25 - vx, 97 - vy);
+        currentAngle += 0.05;
+        if (currentAngle > 3.1) {
+            clearInterval(interval);
+            document.getElementById("form:r" + r).click();
+        }
+    }, 25);
 }

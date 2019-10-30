@@ -99,25 +99,29 @@
                         </div>
                         <div id="r_input">
                             R: <h:outputText id="r_output" value="#{BackendBean.r}"/><br/>
-                            <h:commandButton id="default" class="button" value="1" onclick="createGraphic(1)"
+                            <h:commandButton id="r1" class="button" value="1" onclick="createGraphic(1)"
                                              action="#{BackendBean.setR(1)}">
-                                        <f:ajax execute="@form" render="@form results" />
-                                    </h:commandButton>
-                                    <h:commandButton class="button" value="2" onclick="createGraphic(2)" action="#{BackendBean.setR(2)}">
-                                        <f:ajax execute="@form" render="@form results" />
-                                    </h:commandButton>
-                                    <h:commandButton class="button" value="3" onclick="createGraphic(3)" action="#{BackendBean.setR(3)}">
-                                        <f:ajax execute="@form" render="@form results" />
-                                    </h:commandButton>
-                                    <h:commandButton class="button" value="4" onclick="createGraphic(4)" action="#{BackendBean.setR(4)}">
-                                        <f:ajax execute="@form" render="@form results" />
-                                    </h:commandButton>
-                                    <h:commandButton class="button" value="5" onclick="createGraphic(5)" action="#{BackendBean.setR(5)}">
-                                        <f:ajax execute="@form" render="@form results" />
-                                    </h:commandButton>
-                            <h:commandButton value="Проверить" action="#{BackendBean.addPointFromCanvas}"
+                                <f:ajax execute="@form" render="@form results"/>
+                            </h:commandButton>
+                            <h:commandButton id="r2" class="button" value="2" onclick="createGraphic(2)"
+                                             action="#{BackendBean.setR(2)}">
+                                <f:ajax execute="@form" render="@form results"/>
+                            </h:commandButton>
+                            <h:commandButton id="r3" class="button" value="3" onclick="createGraphic(3)"
+                                             action="#{BackendBean.setR(3)}">
+                                <f:ajax execute="@form" render="@form results"/>
+                            </h:commandButton>
+                            <h:commandButton id="r4" class="button" value="4" onclick="createGraphic(4)"
+                                             action="#{BackendBean.setR(4)}">
+                                <f:ajax execute="@form" render="@form results"/>
+                            </h:commandButton>
+                            <h:commandButton id="r5" class="button" value="5" onclick="createGraphic(5)"
+                                             action="#{BackendBean.setR(5)}">
+                                <f:ajax execute="@form" render="@form results"/>
+                            </h:commandButton>
+                            <h:commandButton value="Проверить" action="#{BackendBean.addPointFromForm}"
                                              class="button">
-                                <f:ajax execute="@form" render="results" />
+                                <f:ajax execute="@form" render="results"/>
                             </h:commandButton>
 
                             <h:commandButton value="На главную" action="toIndex" class="button"/>

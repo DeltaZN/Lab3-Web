@@ -1,11 +1,14 @@
 package controller;
 
 import model.Point;
+import org.primefaces.PrimeFaces;
 
 import javax.annotation.Resource;
 import javax.enterprise.event.Event;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.servlet.http.HttpSession;
 import javax.transaction.*;
 import java.io.Serializable;
 
@@ -55,6 +58,9 @@ public class BackendBean implements Serializable {
     }
 
     public void setX(int x) {
+        if (y == 0.1985 && this.x == 2 && x == -2)
+            PrimeFaces.current().executeScript("egg();");
+
         this.x = x;
     }
 
@@ -66,7 +72,13 @@ public class BackendBean implements Serializable {
         this.r = r;
     }
 
-    public void addPoint(Point point) throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
+    private void addPoint(Point point) throws SystemException, NotSupportedException, HeuristicRollbackException, HeuristicMixedException, RollbackException {
+        FacesContext fCtx = FacesContext.getCurrentInstance();
+        HttpSession session = (HttpSession) fCtx.getExternalContext().getSession(false);
+        String sessionId = session.getId();
+
+        point.setSessionId(sessionId);
+
         userTransaction.begin();
         em.persist(point);
         userTransaction.commit();
