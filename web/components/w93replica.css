@@ -1,26 +1,74 @@
-body {
-    font-family: px_sans_nouveaux,Arial,Helvetica,sans-serif;
-    font-size: 8px;
-    cursor: url(/components/img/default.cur),default;
-    overflow: hidden;
-    margin: 0;
-}
-
-#point-checker-window {
-    border-top: 1px solid silver;
-    border-left: 1px solid silver;
-    border-right: 1px solid gray;
-    border-bottom: 1px solid gray;
-}
-
-div[id$=window] {
-    width: 300px;
-    height: 420px;
-    position: absolute;
-    z-index: 5;
-}
-
-div[id$=window] > table {
-    width: 100%;
+html, body {
     height: 100%;
 }
+
+body {
+    font-family: px_sans_nouveaux,Arial,Helvetica,sans-serif;
+    font-size: 10px;
+    cursor: url(./img/default.cur),default;
+    overflow: hidden;
+    margin: 0;
+    background: linear-gradient(
+            to top left,
+            rgb(99, 203, 255),
+            rgb(104, 181, 243),
+            rgb(109, 159, 231),
+            rgb(114, 138, 220),
+            rgb(119, 116, 208),
+            rgb(124, 94, 196),
+            rgb(140, 90, 200),
+            rgb(156, 86, 203),
+            rgb(172, 82, 207),
+            rgb(187, 78, 210),
+            rgb(203, 74, 214),
+            rgb(219, 70, 217)
+    ) no-repeat;
+}
+
+div[id$=ico]{
+    text-align: center;
+    width: 52px;
+    height: 65px;
+    float: left;
+    margin: 13px;
+}
+
+div[id$=ico] > img{
+    width: 42px;
+}
+
+span.program-title {
+    color: #fff;
+    text-shadow: #0031a5 0 1px;
+    font-family: monospace;
+    font-size: 11px;
+    word-wrap: break-word;
+}
+
+#toolbar {
+    height: 39px;
+    width: 100%;
+    background: silver;
+    display: block;
+    position: fixed;
+    bottom: 0;
+}
+
+/*#point-checker-window {*/
+/*    border-top: 1px solid silver;*/
+/*    border-left: 1px solid silver;*/
+/*    border-right: 1px solid gray;*/
+/*    border-bottom: 1px solid gray;*/
+/*}*/
+
+/*div[id$=window] {*/
+/*    width: 300px;*/
+/*    height: 420px;*/
+/*    position: absolute;*/
+/*    z-index: 5;*/
+/*}*/
+
+/*div[id$=window] > table {*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*}*/

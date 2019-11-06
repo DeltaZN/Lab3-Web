@@ -1,4 +1,3 @@
-export var pointCheckerConfig = {
+const localConfig = {
     name: 'point-checker',
-    img: '/components/img/point-checker.png'
 };
