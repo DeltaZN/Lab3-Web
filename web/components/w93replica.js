@@ -92,8 +92,10 @@ class Window {
         iframe.src = this.src;
 
         this.html = Window.template.cloneNode(true);
-        this.html.id = name + '-window';
-        this.html.querySelector('[app-root]').appendChild(iframe);
+        this.html.id = this.name + '-window';
+        this.html.querySelector('div.title').innerText = this.name;
+        this.html.querySelector('td.app-root').appendChild(iframe);
+        this.html.querySelector(`div.button`).id = this.name + '-closeButton';
 
         return this.html;
     }
@@ -102,11 +104,14 @@ class Window {
         console.log('start window template creating');
         let tmp = document.createElement('div');
         tmp.innerHTML = '<div class="window">' +
-            '<table><tbody>' +
-            '<tr><td>a</td></tr>' +
-            '<tr><td app-root=""></td></tr>' +
-            '</tbody></table>' +
-            '</div>';
+                            '<table><tbody>' +
+                                '<tr><td class="window-header">' +
+                                    '<div class="title">Title</div>' +
+                                    '<div onclick="page.stopProgramByName(this.id.substr(0, this.id.length - 12))" class="button">X</div>' +
+                                '</td></tr>' +
+                                '<tr><td class="app-root"></td></tr>' +
+                            '</tbody></table>' +
+                        '</div>';
         Window.template = tmp.firstChild;
     }
 }
@@ -125,7 +130,7 @@ class Program {
     }
 
     close() {
-        let window = process.getElementById(this.name);
+        let window = document.getElementById(`${this.name}-window`);
         if (window !== null) {
             this.isRunnig = false;
             window.remove();
@@ -134,20 +139,32 @@ class Program {
 }
 
 class Page {
-    constructor(toolbar, context = {running: [], programs: []}) {
+    constructor(toolbar, context = {programs: []}) {
         this.toolbar = toolbar;
         this.context = context;
     }
 
-    runProgramByName(programName) {
+    getProgramByName(programName){
         for (let i in this.context.programs) {
             if (this.context.programs[i].name === programName) {
-                this.context.programs[i].open();
-                return null;
+                return this.context.programs[i];
             }
         }
+        return null;
+    }
 
-        console.log(`program with name ${name} not found`);
+    runProgramByName(programName) {
+        let program = this.getProgramByName(programName);
+        if (program === null)
+            console.log(`program with name ${name} not found`);
+        program.open();
+    }
+
+    stopProgramByName(programName) {
+        let program = this.getProgramByName(programName);
+        if (program === null)
+            console.log(`program with name ${name} not found`);
+        program.close();
     }
 
     init(configs) {
@@ -156,7 +173,7 @@ class Page {
             let window = new Window(configs[i].name, configs[i].url);
             let program = new Program(ico, configs[i].name, window);
             this.context.programs.push(program);
-            Page.showProgramIco(program);
+            setTimeout(()=>Page.showProgramIco(program), 1000*Math.random());
         }
     }
 
