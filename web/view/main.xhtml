@@ -10,14 +10,18 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <h:outputScript library="js" name="script.js"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="../resources/css/style.css"/>
     </h:head>
     <h:body>
-        <div id="header">
-            Developed by Agababyan Karlen and Gosha Sawin
+        <div class="block auto-margin" id="header">
+            Developed by Agababyan Karlen and Gosha Sawin<br/>
+            Group: P3202; Option: 1872<br/>
+            <a href="//github.com/SunnyCapt/Lab3-Web">Source of AK</a>/
+            <a href="//github.com/DeltaThreeEight/Lab3-Web">Source of GS</a>
         </div>
         <div id="content">
-            <div class="program">
-                <div id="graphic">
+            <div class="program block auto-margin flex">
+                <div id="graphic" class="centered">
                     <h:form id="plot">
                         <h:inputHidden id="xCanvas" value="#{BackendBean.xCanvas}">
                         </h:inputHidden>
@@ -28,9 +32,9 @@
                         <p:remoteCommand name="addPoint" action="#{BackendBean.addPointFromCanvas}" update=":results"/>
                     </h:form>
                 </div>
-                <div class="input_form">
-                    <h:form id="form" class="data-form">
-                        <div id="x_input">
+                <div class="input_form centered">
+                    <h:form id="form" class="data-form centered">
+                        <div id="x_input" class="auto-margin">
                             X: <h:outputText id="x_output" value="#{BackendBean.x}"/>
                             <h:inputHidden value="#{BackendBean.x}">
                             </h:inputHidden>
@@ -88,7 +92,7 @@
                                 </tr>
                             </table>
                         </div>
-                        <div id="y_input">
+                        <div id="y_input" class="auto-margin">
                             Y: <h:outputText id="y_output" value="#{BackendBean.y}"/><br/>
                             <h:inputText value="#{BackendBean.y}" id="enterY" name="enterY" title="y"
                                          validatorMessage="Enter correct Y (from -5 to 3)">
@@ -97,7 +101,7 @@
                             </h:inputText><br/>
                             <h:message id="m6" for="enterY" style="color:red"/>
                         </div>
-                        <div id="r_input">
+                        <div id="r_input" class="auto-margin">
                             R: <h:outputText id="r_output" value="#{BackendBean.r}"/><br/>
                             <h:commandButton id="r1" class="button" value="1" onclick="createGraphic(1)"
                                              action="#{BackendBean.setR(1)}">
@@ -126,10 +130,10 @@
 
                             <h:commandButton value="На главную" action="toIndex" class="button"/>
                         </div>
-
                     </h:form>
                 </div>
             </div>
+            <!-- TODO: set "block auto-margin" classes on this block-->
             <h:dataTable value="#{points}" var="p"
                          styleClass="order-table"
                          headerClass="order-table-header"
