@@ -3,7 +3,7 @@
 }
 
 body{
-    background-image: url(../../components/img/bg.gif);
+    background-image: url(../img/bg.gif);
     margin-bottom: 20px;
 }
 
@@ -38,7 +38,7 @@ a {
 }
 
 #graphic {
-    background-image: url("../../components/img/bg_4.gif");
+    background-image: url("../img/bg_4.gif");
     width: 305px;
     height: 305px;
     border-radius: 7%;
@@ -68,7 +68,7 @@ a {
 
 #results {
     width: 100%;
-    background-image: url('../../components/img/bg_3.gif');
+    background-image: url('../img/bg_3.gif');
 }
 
 input {
