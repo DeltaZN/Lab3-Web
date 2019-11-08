@@ -133,8 +133,8 @@
                     </h:form>
                 </div>
             </div>
-            <!-- TODO: set "block auto-margin" classes on this block-->
-            <h:dataTable value="#{points}" var="p"
+            <div class="block auto-margin">
+                <h:dataTable value="#{points}" var="p"
                          styleClass="order-table"
                          headerClass="order-table-header"
                          rowClasses="order-table-odd-row,order-table-even-row"
@@ -170,6 +170,7 @@
                 </h:column>
 
             </h:dataTable>
+            </div>
         </div>
     </h:body>
 </f:view>
